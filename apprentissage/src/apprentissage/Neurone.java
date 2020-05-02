@@ -44,9 +44,9 @@ public class Neurone {
 		}
 		for (int i = 0 ; i < entrees.size() ; i++) {
 			double poidCourant = this.poids.get(i);
-			poidCourant = poidCourant + (resultatAttendu-resultatObtenu)*entrees.get(i);
+			this.poids.set(i, poidCourant + (resultatAttendu-resultatObtenu)*entrees.get(i));
 		}
-		this.poid0 = poid0 - (resultatAttendu-resultatObtenu);
+		this.poid0 = this.poid0 - (resultatAttendu-resultatObtenu);
 		return succes;
 	}
 	

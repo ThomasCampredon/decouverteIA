@@ -24,25 +24,27 @@ public class Main {
 			end = true;
 			iteration+=1;
 			idMotif=0;
-			boolean result; //indique si le neuronne à donner la bonne réponse
+			
 			
 			while (motifs.size()>idMotif) {
 				ArrayList<Integer> motifCourant = motifs.get(idMotif);
 				int attendu = 0;
 				
 				// on choisi le modèle qui devra donner 1
-				if (motifCourant.get(0) == motifCourant.get(3)){ 
+				if ((motifCourant.get(0) == 1) && (motifCourant.get(3)==1) && (motifCourant.get(1)==0) && (motifCourant.get(2)==0)){ 
 					attendu=1;
 				}
-				result = neurone.apprendre(motifCourant, attendu);
+				
+				boolean result = neurone.apprendre(motifCourant, attendu); //indique le resultat du neurone
 				if (result == false) {
 					end = false;
 				}
 				
-				int z = 1;
+				int z = 0;
 				if ((attendu==1)&&(result==true)){
-					z = 0;
+					z = 1;
 				}
+				
 				afficherInfo(motifCourant,neurone, iteration, idMotif, attendu, z);
 				idMotif+=1;
 			}
@@ -52,14 +54,22 @@ public class Main {
 	
 	public static void afficherInfo(ArrayList<Integer>motif, Neurone neurone, int iteration, int idMotif, int d, int z) {
 		ArrayList <Double> poids = (ArrayList<Double>) neurone.getPoids();
-		String info = "E" + iteration + "." + idMotif + " : " + motif.toString() + " : z= " + z + "  d= " + d
+		String info="";
+		
+		if (z==d) {
+			info+="TRUE ";
+		}else {
+			info+="     ";
+		}
+		
+		 info += "E" + iteration + "." + (idMotif+1) + " : " + motif.toString() + " : z= " + z + "  d= " + d
 				+ " : ";
 		
 		for (int i = 0 ; i < poids.size(); i++) {
-			info+=poids.get(i)+" ";
+			info+=poids.get(i)+"  ";
 		}
 		
-		info+=neurone.getPoid0()+"\n";
+		info+=neurone.getPoid0();
 		
 		System.out.println(info);
 	}

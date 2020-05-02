@@ -19,7 +19,7 @@ public class Generateur {
 				nombre = (nombre - reste)/2;
 			}while (nombre!=0);
 			
-			while (binaire.size()<4) {
+			while (binaire.size()<longueur) {
 				binaire.add(0);
 			}
 			Collections.reverse(binaire);

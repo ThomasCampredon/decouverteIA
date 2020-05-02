@@ -7,14 +7,15 @@ public class Neurone {
 	private List <Double> poids;
 	private double poid0;
 	
-	public Neurone (List<Double> poids, double poid0) {
-		this.poids=poids;
-		this.poid0=poid0;
-	}
-	
 	public Neurone (double poid0) {
 		this.poids=new ArrayList<Double>();
 		this.poid0=poid0;
+	}
+	
+	public void initialiserLesPoids(int nombreDePoids) {
+		for (int i = 0 ; i < nombreDePoids ; i++) {
+			this.poids.add(0.0);
+		}
 	}
 	
 	private double somme(List<Integer> entrees) {
@@ -45,7 +46,7 @@ public class Neurone {
 			double poidCourant = this.poids.get(i);
 			poidCourant = poidCourant + (resultatAttendu-resultatObtenu)*entrees.get(i);
 		}
-		
+		this.poid0 = poid0 - (resultatAttendu-resultatObtenu);
 		return succes;
 	}
 	
@@ -57,16 +58,16 @@ public class Neurone {
 		this.poids = poids;
 	}
 
-	public double getSeuil() {
+	public double getPoid0() {
 		return poid0;
 	}
 
-	public void setSeuil(double seuil) {
-		this.poid0 = seuil;
+	public void setPoid0(double poid0) {
+		this.poid0 = poid0;
 	}
 
 	public String toString() {
-		return "seuil = "+this.poid0+" || poids : "+this.poids.toString();
+		return "poid 0 = "+this.poid0+" || poids : "+this.poids.toString();
 	}
 }
 

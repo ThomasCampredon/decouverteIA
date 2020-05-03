@@ -1,2 +1,2 @@
 # decouverteIA
-Une petite réalisation sur les réseaux de neurones trouvée sur la chaine youtube https://www.youtube.com/channel/UCisEu07yH7uWOkyar38_ZQA
+Une petite réalisation sur les réseaux de neurones trouvée sur la chaine youtube https://www.youtube.com/channel/UCisEu07yH7uWOkyar38_ZQA réalisée en java (parce que java c'est cool).
